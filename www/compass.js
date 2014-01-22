@@ -39,7 +39,7 @@ var argscheck = require('cordova/argscheck'),
             argscheck.checkArgs('fFO', 'compass.getCurrentHeading', arguments);
 
             var win = function(result) {
-                var ch = new CompassHeading(result.magneticHeading, result.trueHeading, result.headingAccuracy, result.timestamp);
+                var ch = new CompassHeading(result.magneticHeading, result.trueHeading, result.headingAccuracy, result.fieldStrength, result.timestamp);
                 successCallback(ch);
             };
             var fail = errorCallback && function(code) {

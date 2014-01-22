@@ -19,10 +19,11 @@
  *
 */
 
-var CompassHeading = function(magneticHeading, trueHeading, headingAccuracy, timestamp) {
+var CompassHeading = function(magneticHeading, trueHeading, headingAccuracy, fieldStrength, timestamp) {
   this.magneticHeading = magneticHeading;
   this.trueHeading = trueHeading;
   this.headingAccuracy = headingAccuracy;
+  this.fieldStrength = fieldStrength;
   this.timestamp = timestamp || new Date().getTime();
 };
 
