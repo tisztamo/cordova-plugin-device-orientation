@@ -19,6 +19,7 @@
 package org.apache.cordova.deviceorientation;
 
 import java.util.List;
+import android.util.Log;
 
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
@@ -52,12 +53,14 @@ public class CompassListener extends CordovaPlugin implements SensorEventListene
 
     int status;                         // status of listener
     float heading;                      // most recent heading value
+    double fieldStrength = 0.0d;
     long timeStamp;                     // time of most recent value
     long lastAccessTime;                // time the value was last retrieved
     int accuracy;                       // accuracy of the sensor
 
     private SensorManager sensorManager;// Sensor manager
     Sensor mSensor;                     // Compass sensor returned by sensor manager
+    Sensor magneticSensor;              //The lower level magnetic field sensor allows to mesure the overall magnetic field strenght
 
     private CallbackContext callbackContext;
 
@@ -180,6 +183,19 @@ public class CompassListener extends CordovaPlugin implements SensorEventListene
             this.setStatus(CompassListener.ERROR_FAILED_TO_START);
         }
 
+
+        //The same with magnetic sensor
+        @SuppressWarnings("deprecation")
+         List<Sensor> list2 = this.sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
+
+        // If found, then register as listener
+        if (list2 != null && list2.size() > 0) {
+            this.magneticSensor = list2.get(0);
+            this.sensorManager.registerListener(this, this.magneticSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        } else {
+            Log.d("compass", "NO magnetic sensor");
+        }
+
         return this.status;
     }
 
@@ -194,6 +210,7 @@ public class CompassListener extends CordovaPlugin implements SensorEventListene
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        Log.d("compass", "sensor: " + sensor.getName() + ", accuracy: " + accuracy);
         // TODO Auto-generated method stub
     }
 
@@ -215,7 +232,15 @@ public class CompassListener extends CordovaPlugin implements SensorEventListene
      * @param SensorEvent event
      */
     public void onSensorChanged(SensorEvent event) {
-
+        if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+            double strength = 0;
+            for (int i = 0; i < 3; ++i) {
+                strength += event.values[i] * event.values[i];
+            }
+            strength = Math.sqrt(strength);
+            this.fieldStrength = strength;
+            return;
+        }
         // We only care about the orientation as far as it refers to Magnetic North
         float heading = event.values[0];
 
@@ -289,6 +314,7 @@ public class CompassListener extends CordovaPlugin implements SensorEventListene
         // is defined as the difference between true and magnetic always return zero
         obj.put("headingAccuracy", 0);
         obj.put("timestamp", this.timeStamp);
+        obj.put("fieldStrength", this.fieldStrength);
 
         return obj;
     }
