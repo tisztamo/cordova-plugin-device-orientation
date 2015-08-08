@@ -18,7 +18,6 @@
  */
 
 #import "CDVCompass.h"
-#import <Cordova/NSArray+Comparisons.h>
 
 #pragma mark Constants
 
@@ -57,17 +56,13 @@
 
 @synthesize locationManager, headingData;
 
-- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView
+- (void)pluginInitialize
 {
-    self = (CDVCompass*)[super initWithWebView:(UIWebView*)theWebView];
-    if (self) {
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self; // Tells the location manager to send updates to this object
-        __locationStarted = NO;
-        __highAccuracyEnabled = NO;
-        self.headingData = nil;
-    }
-    return self;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self; // Tells the location manager to send updates to this object
+    __locationStarted = NO;
+    __highAccuracyEnabled = NO;
+    self.headingData = nil;
 }
 
 - (BOOL)hasHeadingSupport
@@ -90,7 +85,7 @@
 - (void)getHeading:(CDVInvokedUrlCommand*)command
 {
     NSString* callbackId = command.callbackId;
-    NSDictionary* options = [command.arguments objectAtIndex:0 withDefault:nil];
+    NSDictionary* options = [command argumentAtIndex:0 withDefault:nil];
     NSNumber* filter = [options valueForKey:@"filter"];
 
     if (filter) {
@@ -126,7 +121,7 @@
 - (void)watchHeadingFilter:(CDVInvokedUrlCommand*)command
 {
     NSString* callbackId = command.callbackId;
-    NSDictionary* options = [command.arguments objectAtIndex:0 withDefault:nil];
+    NSDictionary* options = [command argumentAtIndex:0 withDefault:nil];
     NSNumber* filter = [options valueForKey:@"filter"];
     CDVHeadingData* hData = self.headingData;
 

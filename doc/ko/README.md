@@ -1,23 +1,25 @@
 <!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device-orientation
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device-orientation.svg)](https://travis-ci.org/apache/cordova-plugin-device-orientation)
 
 이 플러그인 디바이스의 나침반에 대 한 액세스를 제공합니다. 나침반 방향 또는 표제는 장치 지적 이다, 일반적으로 장치 위에서 감지 하는 센서입니다. 359.99, 0가 북쪽을 0에서도에서 머리글을 측정 합니다.
 
@@ -38,21 +40,21 @@
 
 ## 지원 되는 플랫폼
 
-*   아마존 화재 운영 체제
-*   안 드 로이드
-*   블랙베리 10
-*   브라우저
-*   Firefox 운영 체제
-*   iOS
-*   Tizen
-*   Windows Phone 7, 8 (사용 가능한 경우 하드웨어)
-*   윈도우 8
+  * 아마존 화재 운영 체제
+  * 안 드 로이드
+  * 블랙베리 10
+  * 브라우저
+  * Firefox 운영 체제
+  * iOS
+  * Tizen
+  * Windows Phone 7, 8 (사용 가능한 경우 하드웨어)
+  * 윈도우 8
 
 ## 메서드
 
-*   navigator.compass.getCurrentHeading
-*   navigator.compass.watchHeading
-*   navigator.compass.clearWatch
+  * navigator.compass.getCurrentHeading
+  * navigator.compass.watchHeading
+  * navigator.compass.clearWatch
 
 ## navigator.compass.getCurrentHeading
 
@@ -85,8 +87,8 @@
 
 `compassOptions`는 다음 키를 포함할 수 있습니다.
 
-*   **frequency**: 자주 밀리초에서 나침반 머리글을 검색 하는 방법. *(수)* (기본값: 100)
-*   **filter**:도 watchHeading 성공 콜백을 시작 하는 데 필요한 변경. 이 값을 설정 하는 경우 **주파수** 는 무시 됩니다. *(수)*
+  * **frequency**: 자주 밀리초에서 나침반 머리글을 검색 하는 방법. *(수)* (기본값: 100)
+  * **filter**:도 watchHeading 성공 콜백을 시작 하는 데 필요한 변경. 이 값을 설정 하는 경우 **주파수** 는 무시 됩니다. *(수)*
 
 ### 예를 들어
 
@@ -116,23 +118,23 @@
 
 ### 아마존 화재 OS 단점
 
-*   `filter`지원 되지 않습니다.
+  * `filter`지원 되지 않습니다.
 
 ### 안 드 로이드 단점
 
-*   대 한 지원`filter`.
+  * 대 한 지원`filter`.
 
 ### 파이어 폭스 OS 단점
 
-*   대 한 지원`filter`.
+  * 대 한 지원`filter`.
 
 ### Tizen 특수
 
-*   대 한 지원`filter`.
+  * 대 한 지원`filter`.
 
 ### Windows Phone 7, 8 특수
 
-*   대 한 지원`filter`.
+  * 대 한 지원`filter`.
 
 ## navigator.compass.clearWatch
 
@@ -141,7 +143,7 @@
     navigator.compass.clearWatch(watchID);
     
 
-*   **watchID**: ID 반환`navigator.compass.watchHeading`.
+  * **watchID**: ID 반환`navigator.compass.watchHeading`.
 
 ### 예를 들어
 
@@ -158,37 +160,37 @@
 
 ### 속성
 
-*   **magneticHeading**: 단일 시점에서 0-359.99에서도 제목. *(수)*
+  * **magneticHeading**: 단일 시점에서 0-359.99에서도 제목. *(수)*
 
-*   **trueHeading**: 단일 시점에서 0-359.99에서에서 지리적 북극을 기준으로 향하고. 음수 값을 나타냅니다 진정한 표제를 확인할 수 없습니다. *(수)*
+  * **trueHeading**: 단일 시점에서 0-359.99에서에서 지리적 북극을 기준으로 향하고. 음수 값을 나타냅니다 진정한 표제를 확인할 수 없습니다. *(수)*
 
-*   **headingAccuracy**: 보고 된 머리글 사이의 진정한 제목도 편차. *(수)*
+  * **headingAccuracy**: 보고 된 머리글 사이의 진정한 제목도 편차. *(수)*
 
-*   **타임 스탬프**:이 제목 결정 하는 시간. *(밀리초)*
+  * **타임 스탬프**:이 제목 결정 하는 시간. *(밀리초)*
 
 ### 아마존 화재 OS 단점
 
-*   `trueHeading`지원 되지 않습니다 하지만 같은 값으로 보고`magneticHeading`
+  * `trueHeading`지원 되지 않습니다 하지만 같은 값으로 보고`magneticHeading`
 
-*   `headingAccuracy`항상 0 사이 차이가 있기 때문에 `magneticHeading` 와`trueHeading`
+  * `headingAccuracy`항상 0 사이 차이가 있기 때문에 `magneticHeading` 와`trueHeading`
 
 ### 안 드 로이드 단점
 
-*   `trueHeading`속성은 지원 되지 않습니다 하지만 같은 값으로 보고`magneticHeading`.
+  * `trueHeading`속성은 지원 되지 않습니다 하지만 같은 값으로 보고`magneticHeading`.
 
-*   `headingAccuracy`속성은 항상 0 사이 차이가 있기 때문에 `magneticHeading` 와`trueHeading`.
+  * `headingAccuracy`속성은 항상 0 사이 차이가 있기 때문에 `magneticHeading` 와`trueHeading`.
 
 ### 파이어 폭스 OS 단점
 
-*   `trueHeading`속성은 지원 되지 않습니다 하지만 같은 값으로 보고`magneticHeading`.
+  * `trueHeading`속성은 지원 되지 않습니다 하지만 같은 값으로 보고`magneticHeading`.
 
-*   `headingAccuracy`속성은 항상 0 사이 차이가 있기 때문에 `magneticHeading` 와`trueHeading`.
+  * `headingAccuracy`속성은 항상 0 사이 차이가 있기 때문에 `magneticHeading` 와`trueHeading`.
 
 ### iOS 단점
 
-*   `trueHeading`속성을 통해 위치 서비스에 대 한 반환만`navigator.geolocation.watchLocation()`.
+  * `trueHeading`속성을 통해 위치 서비스에 대 한 반환만`navigator.geolocation.watchLocation()`.
 
-*   IOS 4 장치에 대 한 위의 제목 소자의 현재 방향에서 요인 그리고, 그 방향을 지 원하는 애플 리 케이 션에 대 한 그것의 절대 위치를 참조 하지 않습니다.
+  * IOS 4 장치에 대 한 위의 제목 소자의 현재 방향에서 요인 그리고, 그 방향을 지 원하는 애플 리 케이 션에 대 한 그것의 절대 위치를 참조 하지 않습니다.
 
 ## CompassError
 
@@ -196,9 +198,9 @@
 
 ### 속성
 
-*   **코드**: 미리 정의 된 오류 코드 중 하나가 아래에 나열 된.
+  * **코드**: 미리 정의 된 오류 코드 중 하나가 아래에 나열 된.
 
 ### 상수
 
-*   `CompassError.COMPASS_INTERNAL_ERR`
-*   `CompassError.COMPASS_NOT_SUPPORTED`
+  * `CompassError.COMPASS_INTERNAL_ERR`
+  * `CompassError.COMPASS_NOT_SUPPORTED`

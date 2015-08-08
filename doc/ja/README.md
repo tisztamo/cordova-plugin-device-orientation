@@ -1,23 +1,25 @@
 <!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+# license: Licensed to the Apache Software Foundation (ASF) under one
+#         or more contributor license agreements.  See the NOTICE file
+#         distributed with this work for additional information
+#         regarding copyright ownership.  The ASF licenses this file
+#         to you under the Apache License, Version 2.0 (the
+#         "License"); you may not use this file except in compliance
+#         with the License.  You may obtain a copy of the License at
+#
+#           http://www.apache.org/licenses/LICENSE-2.0
+#
+#         Unless required by applicable law or agreed to in writing,
+#         software distributed under the License is distributed on an
+#         "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#         KIND, either express or implied.  See the License for the
+#         specific language governing permissions and limitations
+#         under the License.
 -->
 
 # cordova-plugin-device-orientation
+
+[![Build Status](https://travis-ci.org/apache/cordova-plugin-device-orientation.svg)](https://travis-ci.org/apache/cordova-plugin-device-orientation)
 
 このプラグインは、デバイスのコンパスへのアクセスを提供します。 コンパスは方向またはというデバイスは、通常から指摘装置の上部の見出しを検出するセンサーです。 359.99、0 は北に 0 からの角度で見出しを測定します。
 
@@ -38,21 +40,21 @@
 
 ## サポートされているプラットフォーム
 
-*   アマゾン火 OS
-*   アンドロイド
-*   ブラックベリー 10
-*   ブラウザー
-*   Firefox の OS
-*   iOS
-*   Tizen
-*   Windows Phone 7 および 8 (可能な場合ハードウェアで)
-*   Windows 8
+  * アマゾン火 OS
+  * アンドロイド
+  * ブラックベリー 10
+  * ブラウザー
+  * Firefox の OS
+  * iOS
+  * Tizen
+  * Windows Phone 7 および 8 (可能な場合ハードウェアで)
+  * Windows 8
 
 ## メソッド
 
-*   navigator.compass.getCurrentHeading
-*   navigator.compass.watchHeading
-*   navigator.compass.clearWatch
+  * navigator.compass.getCurrentHeading
+  * navigator.compass.watchHeading
+  * navigator.compass.clearWatch
 
 ## navigator.compass.getCurrentHeading
 
@@ -85,8 +87,8 @@
 
 `compassOptions` は、次のキーを含めることができます。
 
-*   **周波数**: 多くの場合、コンパス針路 (ミリ秒単位) を取得する方法。*(数)*(デフォルト: 100)
-*   **フィルター**: watchHeading 成功時のコールバックを開始する必要度の変化。この値を設定すると、**頻度**は無視されます。*(数)*
+  * **周波数**: 多くの場合、コンパス針路 (ミリ秒単位) を取得する方法。*(数)*(デフォルト: 100)
+  * **フィルター**: watchHeading 成功時のコールバックを開始する必要度の変化。この値を設定すると、**頻度**は無視されます。*(数)*
 
 ### 例
 
@@ -116,23 +118,23 @@
 
 ### アマゾン火 OS 癖
 
-*   `filter`サポートされていません。
+  * `filter`サポートされていません。
 
 ### Android の癖
 
-*   サポートされていません`filter`.
+  * サポートされていません`filter`.
 
 ### Firefox OS 癖
 
-*   サポートされていません`filter`.
+  * サポートされていません`filter`.
 
 ### Tizen の癖
 
-*   サポートされていません`filter`.
+  * サポートされていません`filter`.
 
 ### Windows Phone 7 と 8 癖
 
-*   サポートされていません`filter`.
+  * サポートされていません`filter`.
 
 ## navigator.compass.clearWatch
 
@@ -141,7 +143,7 @@
     navigator.compass.clearWatch(watchID);
     
 
-*   **watchID**: によって返される ID`navigator.compass.watchHeading`.
+  * **watchID**: によって返される ID`navigator.compass.watchHeading`.
 
 ### 例
 
@@ -158,37 +160,37 @@
 
 ### プロパティ
 
-*   **magneticHeading**: 1 つの時点で 0 359.99 から角度での見出し。*(数)*
+  * **magneticHeading**: 1 つの時点で 0 359.99 から角度での見出し。*(数)*
 
-*   **trueHeading**: 度 0 359.99 で地理的な北極を基準にして、1 つの時点での見出し。 負の値は真針路を特定できないことを示します。 *(数)*
+  * **trueHeading**: 度 0 359.99 で地理的な北極を基準にして、1 つの時点での見出し。 負の値は真針路を特定できないことを示します。 *(数)*
 
-*   **headingAccuracy**: 報告された見出しと真方位角度偏差。*(数)*
+  * **headingAccuracy**: 報告された見出しと真方位角度偏差。*(数)*
 
-*   **タイムスタンプ**: この見出しを決定した時。*(ミリ秒)*
+  * **タイムスタンプ**: この見出しを決定した時。*(ミリ秒)*
 
 ### アマゾン火 OS 癖
 
-*   `trueHeading`レポートと同じ値はサポートされていません`magneticHeading`
+  * `trueHeading`レポートと同じ値はサポートされていません`magneticHeading`
 
-*   `headingAccuracy`常に 0 の間の違いはありませんので、 `magneticHeading` と`trueHeading`
+  * `headingAccuracy`常に 0 の間の違いはありませんので、 `magneticHeading` と`trueHeading`
 
 ### Android の癖
 
-*   `trueHeading`プロパティはサポートされていませんと同じ値を報告`magneticHeading`.
+  * `trueHeading`プロパティはサポートされていませんと同じ値を報告`magneticHeading`.
 
-*   `headingAccuracy`プロパティは常に 0 の間の違いはありませんので、 `magneticHeading` と`trueHeading`.
+  * `headingAccuracy`プロパティは常に 0 の間の違いはありませんので、 `magneticHeading` と`trueHeading`.
 
 ### Firefox OS 癖
 
-*   `trueHeading`プロパティはサポートされていませんと同じ値を報告`magneticHeading`.
+  * `trueHeading`プロパティはサポートされていませんと同じ値を報告`magneticHeading`.
 
-*   `headingAccuracy`プロパティは常に 0 の間の違いはありませんので、 `magneticHeading` と`trueHeading`.
+  * `headingAccuracy`プロパティは常に 0 の間の違いはありませんので、 `magneticHeading` と`trueHeading`.
 
 ### iOS の癖
 
-*   `trueHeading`経由で有効になっている位置情報サービスのプロパティが返されますのみ`navigator.geolocation.watchLocation()`.
+  * `trueHeading`経由で有効になっている位置情報サービスのプロパティが返されますのみ`navigator.geolocation.watchLocation()`.
 
-*   IOS 4 デバイス上見出しデバイスの現在の向きの要因そして、その向きをサポートするアプリケーションのための絶対位置を参照していません。
+  * IOS 4 デバイス上見出しデバイスの現在の向きの要因そして、その向きをサポートするアプリケーションのための絶対位置を参照していません。
 
 ## CompassError
 
@@ -196,9 +198,9 @@
 
 ### プロパティ
 
-*   **コード**: 次のいずれかの定義済みのエラー コード。
+  * **コード**: 次のいずれかの定義済みのエラー コード。
 
 ### 定数
 
-*   `CompassError.COMPASS_INTERNAL_ERR`
-*   `CompassError.COMPASS_NOT_SUPPORTED`
+  * `CompassError.COMPASS_INTERNAL_ERR`
+  * `CompassError.COMPASS_NOT_SUPPORTED`

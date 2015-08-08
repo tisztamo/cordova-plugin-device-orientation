@@ -23,8 +23,8 @@
 /*global Windows:true, require, module, setTimeout */
 
 var cordova = require('cordova'),
-    CompassHeading = require('org.apache.cordova.device-orientation.CompassHeading'),
-    CompassError = require('org.apache.cordova.device-orientation.CompassError');
+    CompassHeading = require('cordova-plugin-device-orientation.CompassHeading'),
+    CompassError = require('cordova-plugin-device-orientation.CompassError');
 
 
 module.exports = {
@@ -37,30 +37,17 @@ module.exports = {
                 lose(CompassError.COMPASS_NOT_SUPPORTED);
             }, 0);
         } else {
-
-            deviceCompass.reportInterval = Math.max(16, deviceCompass.minimumReportInterval);
-
-            this.onReadingChanged = function (e) {
-                var reading = e.reading,
-                    heading = new CompassHeading(reading.headingMagneticNorth, reading.headingTrueNorth, null, reading.timestamp.getTime());
+            var reading = deviceCompass.getCurrentReading(),
+                heading = new CompassHeading(reading.headingMagneticNorth, reading.headingTrueNorth, null, reading.timestamp.getTime());
+            setTimeout(function () {
                 win(heading);
-            };
-            deviceCompass.addEventListener("readingchanged", this.onReadingChanged);
+            }, 0);
         }
     },
     stopHeading: function (win, lose) {
-        var deviceCompass = Windows.Devices.Sensors.Compass.getDefault();
-        if (!deviceCompass) {
-            setTimeout(function () {
-                lose(CompassError.COMPASS_NOT_SUPPORTED);
-            }, 0);
-        } else {
-            deviceCompass.removeEventListener("readingchanged", this.onReadingChanged);
-            this.onReadingChanged = null;
-            deviceCompass.reportInterval = 0;
+        setTimeout(function () {
             win();
-        }
-
+        }, 0);
     }
 };
 
